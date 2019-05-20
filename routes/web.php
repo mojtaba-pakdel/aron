@@ -11,10 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test', function () {
-    return 'test';
-});
+Route::get('/admin/panel', 'Admin/PanelController@index');
