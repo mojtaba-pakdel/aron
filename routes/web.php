@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/admin/panel', 'Admin/PanelController@index');
+Route::get('/admin/panel', 'Admin\PanelController@index');
