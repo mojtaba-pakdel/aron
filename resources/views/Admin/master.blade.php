@@ -6,27 +6,8 @@
     <base href="../../../">
     <!--end::Base Path -->
     <meta charset="utf-8" />
-    <title>تست</title>
-    <meta name="description" content="Page with empty content">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--begin::Fonts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-    <script>
-        WebFont.load({
-            google: {
-                "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"]
-            },
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-        });
-    </script>
+    @yield('title-meta')
     <!--end::Fonts -->
-    <!--begin::Page Vendors Styles(used by this page) -->
-    <link href="vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Page Vendors Styles -->
-    <!--begin:: Global Mandatory Vendors -->
-    <link href="/vendors/general/perfect-scrollbar/css/perfect-scrollbar.rtl.css" rel="stylesheet" type="text/css" />
     @yield('css')
     <!--end:: Global Mandatory Vendors -->
     <!--begin:: Global Optional Vendors -->
@@ -51,6 +32,7 @@
     <link href="/css/demo1/skins/header/menu/light.rtl.css" rel="stylesheet" type="text/css" />
     <link href="/css/demo1/skins/brand/dark.rtl.css" rel="stylesheet" type="text/css" />
     <link href="/css/demo1/skins/aside/dark.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="/css/master-admin.css" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="/media/logos/favicon.ico" />
@@ -1691,8 +1673,7 @@
 @yield('page-script')
 <!--end::Page Vendors -->
 
-<!--begin::Page Scripts(used by this page) -->
-<script src="/js/demo1/pages/dashboard.js" type="text/javascript"></script>
+
 
 <!--end::Page Scripts -->
 </body>

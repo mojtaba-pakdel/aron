@@ -105,30 +105,44 @@ var KTSweetAlert2Demo = function() {
             });
         });
 
-        $('#kt_sweetalert_demo_9').click(function(e) {
+        $('.kt_sweetalert_demo_9').click(function(e) {
+            var model = $(this).data('model');
+            var id = $(this).data('id');
+
             swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'از حذف رکورد مورد نظر اطمینان دارید؟',
+                text: "پس از حذف امکان بازگردادن اطلاعات موجود نیست",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'حیر!',
                 reverseButtons: true
             }).then(function(result){
                 if (result.value) {
+                    $.ajaxSetup({
+                        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+                    });
                     swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
+                        'اطلاعات حذف شد',
+                        'رکورد مورد نظر با موفقیت حذف شد',
                         'success'
-                    )
+                    ),$.ajax({
+
+                                type: "DELETE",
+                                url: "/admin/"+model+"/"+id+"",
+                                success: function(data) {
+
+                                }
+                            });
                     // result.dismiss can be 'cancel', 'overlay',
                     // 'close', and 'timer'
                 } else if (result.dismiss === 'cancel') {
                     swal.fire(
-                        'Cancelled',
-                        'Your imaginary file is safe :)',
+                        'انصراف',
+                        'از حذف منصرف شدم :)',
                         'error'
                     )
+
                 }
             });
         });
