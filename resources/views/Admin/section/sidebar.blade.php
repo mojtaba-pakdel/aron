@@ -11,12 +11,14 @@
                 <h4 class="kt-menu__section-text">محتوا</h4>
                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
             </li>
+            @can('add-article')
             <li class="kt-menu__item  " aria-haspopup="true">
                 <a href="{{route('articles.create')}}" class="kt-menu__link kt-menu__toggle">
                     <i class="kt-menu__link-icon flaticon-web"></i>
                     <span class="kt-menu__link-text">افزودن</span>
                 </a>
             </li>
+            @endcan
             <li class="kt-menu__item  " aria-haspopup="true">
                 <a href="{{route('articles.index')}}" class="kt-menu__link kt-menu__toggle">
                     <i class="kt-menu__link-icon flaticon-web"></i>
