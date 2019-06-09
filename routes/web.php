@@ -11,4 +11,25 @@
 |
 */
 
-Route::get('/admin/panel', 'Admin\PanelController@index');
+Route::namespace('Admin')->prefix('admin')->group(function (){
+    Route::get('/panel' , 'PanelController@index');
+    Route::post('/panel/upload-image' , 'PanelController@uploadImageSubject');
+    Route::post('/articles/{article}', 'ArticleController@destroy');
+    Route::post('/categories/{category}', 'CategoryController@destroy');
+    Route::post('/category_courses/{category_course}', 'CategoryCourseController@destroy');
+    Route::post('/courses/{course}' , 'CourseController@destroy');
+    Route::post('/episodes/{episode}' , 'EpisodeController@destroy');
+    Route::resource('articles' , 'ArticleController');
+    Route::resource('categories' , 'CategoryController');
+    Route::resource('category_courses' , 'CategoryCourseController');
+    Route::resource('courses' , 'CourseController');
+    Route::resource('episodes' , 'EpisodeController');
+    Route::resource('roles' , 'RoleController');
+    Route::resource('permissions' , 'PermissionController');
+    Route::group(['prefix' => 'users'], function(){
+        Route::get('/' , 'UserController@index');
+        Route::delete('/{user}' , 'UserController@destroy');
+        Route::post('/create' , 'UserController@create')->name('users.create');
+    });
+});
+

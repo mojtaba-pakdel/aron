@@ -13,6 +13,7 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
@@ -23,11 +24,14 @@ class CreateCoursesTable extends Migration
             $table->text('description');
             $table->text('body');
             $table->string('price', 50);
-            $table->string('imageUrl');
+            $table->text('images');
             $table->string('tags');
+            $table->integer('status')->default(0);
             $table->string('time',15)->default('00:00:00');
             $table->integer('viewCount')->default(0);
             $table->integer('commentCount')->default(0);
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_description')->nullable();
             $table->timestamps();
         });
     }
