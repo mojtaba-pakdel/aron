@@ -11,7 +11,9 @@
 |
 */
 
-Route::namespace('Admin')->prefix('admin')->group(function (){
+use App\User;
+
+Route::group(['namespace'=> 'Admin','middleware' => ['auth:web', 'checkAdmin'] , 'prefix' => 'admin'],function (){
     Route::get('/panel' , 'PanelController@index');
     Route::post('/panel/upload-image' , 'PanelController@uploadImageSubject');
     Route::post('/articles/{article}', 'ArticleController@destroy');
@@ -29,7 +31,22 @@ Route::namespace('Admin')->prefix('admin')->group(function (){
     Route::group(['prefix' => 'users'], function(){
         Route::get('/' , 'UserController@index');
         Route::delete('/{user}' , 'UserController@destroy');
+        Route::resource('/level' , 'LevelManageController' , ['parameters' => ['level'=>'user']]);
         Route::post('/create' , 'UserController@create')->name('users.create');
     });
 });
+Route::group(['namespace' => 'Auth'] , function(){
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login');
+    Route::get('logout', 'LoginController@logout')->name('logout');
+
+    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'RegisterController@register');
+    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
+});
+
+Route::get('/' , 'HomeController@index');
 

@@ -16,6 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        auth()->loginUsingId(1);
         $roles = Role::all();
         return view('Admin.roles.all' , compact('roles'));
     }
@@ -73,7 +74,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $permissions = Permission::all();
-        return view('Admin.roles.create' , compact('permissions','role'));
+        return view('Admin.roles.edit' , compact('permissions','role'));
     }
 
     /**

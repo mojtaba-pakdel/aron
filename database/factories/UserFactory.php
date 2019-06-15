@@ -29,3 +29,13 @@ $factory->define(User::class, function (Faker $faker) {
     }
 
 });
+
+$factory->define(\App\Payment::class, function ($faker){
+    return [
+        'user_id' => rand(2,4),
+        'resnumber' => rand(1000000,5000000),
+        'price' => rand(1000,50000),
+        'payment' => rand(0,1),
+        'created_at' => $faker->dateTimeBetween('-6 months' , 'now'),
+    ];
+});

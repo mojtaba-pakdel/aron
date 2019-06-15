@@ -4,8 +4,8 @@
     <link href="/vendors/general/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet" type="text/css" />
 @endsection
 @section('title-meta')
-    <title>{{$role->name}}</title>
-    <meta name="description" content="{{$role->label}}">
+    <title>{{$permission->name}}</title>
+    <meta name="description" content="{{$permission->label}}">
 @endsection
 @section('content')
     <!-- begin:: Content -->
@@ -18,13 +18,13 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                {{$role->name}}ویرایش نقش کاربری
+                                {{$permission->name}}ویرایش نقش کاربری
                             </h3>
                         </div>
                     </div>
 
                     <!--begin::Form-->
-                    <form class="kt-form kt-form--label-right" action="{{route('roles.update',['role'=>$role->id])}}" method="post" enctype="multipart/form-data">
+                    <form class="kt-form kt-form--label-right" action="{{route('permissions.update',['permission'=>$permission->id])}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{method_field('PATCH')}}
                         @include('Admin.section.errors')
@@ -32,26 +32,16 @@
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label>نام:</label>
-                                    <input type="text" name="name" class="form-control" value="{{$role->name}}" placeholder="نام نقش را وارد کنید">
+                                    <input type="text" name="name" class="form-control" value="{{$permission->name}}" placeholder="نام نقش را وارد کنید">
                                     <span class="form-text text-muted">نام نقش را وارد کنید</span>
                                 </div>
                                 <div class="col-lg-6">
                                     <label>توضیحات:</label>
-                                    <input type="text" name="label" class="form-control" value="{{$role->label}}" placeholder="توضیحات نقش را وارد کنید">
+                                    <input type="text" name="label" class="form-control" value="{{$permission->label}}" placeholder="توضیحات نقش را وارد کنید">
                                     <span class="form-text text-muted">توضیحات نقش را وارد کنید</span>
                                 </div>
 
 
-                            </div>
-                            <div class="form-group row">
-                                <div class=" col-lg-12 col-md-12 col-sm-12">
-                                    <label>سطوح دسترسی</label>
-                                    <select class="form-control kt-select2" id="kt_select2_3" name="permission_id[]" multiple="multiple">
-                                        @foreach($permissions as $permission)
-                                            <option value="{{$permission->id}}" {{in_array($permission->id , $role->permissions()->pluck('id')->toArray())? "selected":""}} >{{$permission->name}} - {{$permission->label}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                             </div>
                         </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\CategoryCourse;
 use App\Course;
 use App\Http\Requests\CourseRequest;
+use App\Payment;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\AdminController;
@@ -19,6 +20,7 @@ class CourseController extends AdminController
     public function index()
     {
         $courses = Course::latest()->paginate(20);
+        $payment = Payment::SpanningPayment(12,true)->get();
         return view('admin.courses.all',compact("courses"));
     }
 

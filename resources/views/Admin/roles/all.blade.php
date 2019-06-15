@@ -107,9 +107,9 @@
                         <td>{{$role->label}}</td>
                         <td>{{verta($role->created_at)}}</td>
                        <td>
-{{--                            <a href="{{route('courses.edit',['course'=>$course->slug])}}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                           <a href="{{route('roles.edit',['role'=>$role->id])}}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
                                 <i class="la la-edit"></i>
-                            </a>--}}
+                           </a>
                             <button type="button" data-model="roles" data-id="{{$role->id}}" class="btn  btn-custom kt_sweetalert_demo_9">  <i class="fa fa-trash"></i></button>
                         </td>
                     </tr>

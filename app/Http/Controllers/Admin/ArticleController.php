@@ -31,6 +31,7 @@ class ArticleController extends AdminController
      */
     public function create()
     {
+        $this->authorize('add-article');
         $categories = Category::all();
         return view('admin.articles.create',compact('categories'));
     }
@@ -43,7 +44,6 @@ class ArticleController extends AdminController
      */
     public function store(ArticleRequest $request)
     {
-        auth()->loginUsingId(1, true);
         $imagesUrl = $this->uploadImages($request->file('images'),'contents');
         $inputs = $request->all();
         $inputs['status'] = ($request->input('status') == "on") ? 1:0 ;

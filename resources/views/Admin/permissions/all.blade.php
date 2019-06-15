@@ -4,8 +4,8 @@
     <link href="/vendors/general/sweetalert2/dist/sweetalert2.rtl.css" rel="stylesheet" type="text/css" />
 @endsection
 @section('title-meta')
-    <title>سطوح کاربران</title>
-    <meta name="description" content="لیست سطوح کاربران">
+    <title>دسترسی ها</title>
+    <meta name="description" content="لیست دسترسی ها">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 @section('content')
@@ -23,7 +23,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                     <h3 class="kt-portlet__head-title">
-                     لیست سطوح کاربری
+                   دسترسی های مختلف کاربران
                     </h3>
                 </div>
                 <div class="kt-portlet__head-toolbar">
@@ -72,9 +72,9 @@
                                 </div>
                             </div>
                             &nbsp;
-                            <a href="{{route('roles.create')}}" class="btn btn-brand btn-elevate btn-icon-sm">
+                            <a href="{{route('permissions.create')}}" class="btn btn-brand btn-elevate btn-icon-sm">
                                 <i class="la la-plus"></i>
-                                ایجاد نقش جدید
+                               ایجاد دسترسی جدید
                             </a>
                             <a href="{{route('permissions.index')}}" class="btn btn-brand btn-elevate btn-icon-sm">
                                 <i class="la la-plus"></i>
@@ -101,16 +101,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($roles as $role)
-                    <tr class="row_{{$role->id}}">
-                        <td>{{$role->name}}</td>
-                        <td>{{$role->label}}</td>
-                        <td>{{verta($role->created_at)}}</td>
+                    @foreach($permissions as $permission)
+                    <tr class="row_{{$permission->id}}">
+                        <td>{{$permission->name}}</td>
+                        <td>{{$permission->label}}</td>
+                        <td>{{verta($permission->created_at)}}</td>
                        <td>
-                           <a href="{{route('roles.edit',['role'=>$role->id])}}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                           <a href="{{route('permissions.edit',['role'=>$permission->id])}}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
                                 <i class="la la-edit"></i>
                            </a>
-                            <button type="button" data-model="roles" data-id="{{$role->id}}" class="btn  btn-custom kt_sweetalert_demo_9">  <i class="fa fa-trash"></i></button>
+                            <button type="button" data-model="permissions" data-id="{{$permission->id}}" class="btn  btn-custom kt_sweetalert_demo_9">  <i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                         @endforeach
