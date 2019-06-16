@@ -15,7 +15,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sliders =
         return view('front.home.index');
     }
 }
