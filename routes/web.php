@@ -49,4 +49,5 @@ Route::group(['namespace' => 'Auth'] , function(){
 });
 
 Route::get('/' , 'HomeController@index');
+Route::get('user/active/email/{token}' , 'UserController@activation')->name('activation.account');
 

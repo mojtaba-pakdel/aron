@@ -19,7 +19,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         'App\Events\UserActivation' => [
-            'App\Listeners\UserRegistered\SendMailNotification',
+            'App\Listeners\UserActivation\SendMailNotification',
             //'App\Listeners\UserRegistered\SendSMSNotification',
         ],
     ];
